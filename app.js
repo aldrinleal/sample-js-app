@@ -5,6 +5,8 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
+app.use(require('morgan')('dev'));
+
 app.get('/', function (req, res) {
   res.send(JSON.stringify({
   	version: process.version
