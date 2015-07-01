@@ -8,13 +8,13 @@ var port = process.env.PORT || 3000;
 app.get('/', function (req, res) {
   res.send(JSON.stringify({
   	version: process.version
-  }));
+  }) + '\n');
 });
 
 app.get('/memory', function (req, res) {
   res.send(JSON.stringify({
   	version: process.memoryUsage()
-  }));
+  }) + '\n');
 });
 
 var server = app.listen(port, function () {
