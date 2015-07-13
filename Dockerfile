@@ -1,17 +1,19 @@
-FROM etiv/nvm-base
+FROM debian
 
-ENV NODE_VER=iojs-2.3.1
+RUN apt-get update
 
-RUN bash --login 
+RUN apt-get -y install nodejs npm
 
 RUN mkdir /app
 
 COPY . /app/
 
+ENV PORT 8000
+
+EXPOSE 8000
+
 WORKDIR /app
 
-EXPOSE 3000
+RUN npm install
 
-RUN bash --login -c 'npm install'
-
-CMD '/root/.nvm/nvm.sh && node /app/app.js'
+CMD nodejs /app/index.js
